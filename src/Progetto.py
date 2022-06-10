@@ -1,12 +1,19 @@
 import tkinter as tk
 from tkinter import Y, Canvas, Frame, Scrollbar, ttk
 import webbrowser
-
+import json
 win = tk.Tk()
 win.geometry('1200x650')
 win.title("Python GUI")
 
-rank_filename = "Classifica 2022.txt"
+classifiche=open("src/Rankings.json")
+
+dati_classifiche = json.load(classifiche)
+
+"""for i in dati_classifiche['2022']:
+ print(i)"""
+
+"""rank_filename = "Classifica 2022.txt"
 file_rank = open(rank_filename, "r", encoding = "utf8")
 rank_data = file_rank.read()
 
@@ -20,7 +27,7 @@ text_data1 = file_text1.read()
 
 text_filename2 = "Testo O forse sei tu.txt"
 file_text2 = open(text_filename2, "r", encoding = "utf8")
-text_data2 = file_text2.read()
+text_data2 = file_text2.read()"""
 
 ex_rank_frame = Frame(win, bg = "light green")
 ex_rank_frame.pack_propagate(0)
@@ -79,10 +86,10 @@ def show_text():
 	if sc == 0: text_canvas.create_text(300, 60, fill = "red", text = "PLEASE, SELECT A SONG FIRST!", font = ('Helvetica', '15','bold'))
 	else:
 		text_canvas.create_text(300, 40, text = "Song text", font = ('Helvetica', '15','bold'))
-		if sc == 1:
+		"""if sc == 1:
 			text_canvas.create_text(250, 530, text = text_data1, font = ('Helvetica', '12'))
 		elif sc == 2:
-			text_canvas.create_text(250, 530, text = text_data2, font = ('Helvetica', '12'))
+			text_canvas.create_text(250, 530, text = text_data2, font = ('Helvetica', '12'))"""
 	text_canvas.pack()
 
 def hide_text():
@@ -93,8 +100,18 @@ def show_ranking(event):
 	year_chosen = event.widget.get()
 	rank_canvas.delete("all")
 	rank_canvas.create_text(300, 40, text = "Ranking", font = ('Helvetica', '15','bold'))
+	posizione_classifica=1
+	pos_y = 85
+	for canzone in dati_classifiche[year_chosen]:
+		dati_canzone = str(posizione_classifica) + " " + canzone['title'] + " " + canzone['singer']
+		rank_canvas.create_text(300, pos_y, text = dati_canzone, font = ('Helvetica', '12'))
+		posizione_classifica = posizione_classifica + 1
+		pos_y = pos_y + 25 
+	"""
 	if year_chosen == "2022": rank_canvas.create_text(300, 300, text = rank_data, font = ('Helvetica', '12'))
 	elif year_chosen == "2021": rank_canvas.create_text(300, 300, text = rank_data2, font = ('Helvetica', '12'))
+	"""
+    
 
 ttk.Label(win, text = "Choose a year: ").place(x = 150, y = 20)
 year = tk.StringVar()
