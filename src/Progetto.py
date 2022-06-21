@@ -12,6 +12,7 @@ win.resizable(False, False)
 window_width = win.winfo_width()
 window_height = win.winfo_height()
 		
+	
 class RankingFrame(tk.Frame):
     def __init__(self, container):
         super().__init__(container)
@@ -83,7 +84,7 @@ class App(tk.Frame):
         video_button = tk.Button(self.app_frame, text = "Go to video", command = self.show_video)
         video_button.place(relheight = 0.03, relwidth = 0.08, relx = 0.550, rely = 0.04)
         
-		# button that displays song's text inside frame
+	# button that displays song's text inside frame
         text_button = tk.Button(self.app_frame, text = "Show text", command = self.show_text)
         text_button.place(relheight = 0.03, relwidth = 0.08, relx = 0.690, rely = 0.04)
 		
@@ -111,8 +112,7 @@ class App(tk.Frame):
             rank_canvas.create_window(20, pos_y, anchor = 'w', window = curRad, height = 30)
             pos_y = pos_y + 25
             posizione_classifica = posizione_classifica + 1
-        
-    
+       
     def show_text(self):
         text_canvas = self.song_text_instance.song_text_canvas
         text_vbar = self.song_text_instance.song_text_vertical_bar 
