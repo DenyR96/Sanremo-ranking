@@ -3,7 +3,6 @@ import tkinter as tk
 from tkinter import Canvas, Scrollbar, ttk
 import platform
 import json
-from turtle import color
 import webbrowser
 import pygame
 from urllib.request import urlopen
@@ -17,6 +16,28 @@ os_name = platform.system()
 if os_name == "Windows" or os_name == "Darwin": win.state("zoomed")
 else: win.attributes("-zoomed", True)
 win.resizable(False, False)
+
+#colors and fonts
+global color_text
+color_text = "#ffffff"
+
+global bg_color_canvas
+bg_color_canvas = "#5e269d"
+
+global bg_color_frame
+bg_color_frame = "#00008b"
+
+global font_btn
+font_btn = ("Lao UI", 14)
+
+global bg_btn
+bg_btn = "#5e269d"
+
+global font_title
+font_title = ("MS Serif", 22, "bold")
+
+global font_text
+font_text = ("Comic Sans MS", 16, "italic")
 
 #rankings and songs text files
 rankings = open("src/Rankings.json", mode = "r")
@@ -153,28 +174,6 @@ class App(tk.Frame):
         self.radVar = tk.IntVar()
         self.radVar.set(99) #Select a non-existing index value for radVar
         self.app_frame = tk.Frame(win, bg = bg_color_frame)
-        
-        #colors and fonts
-        global color_text
-        color_text = "#ffffff"
-
-        global bg_color_canvas
-        bg_color_canvas = "#5e269d"
-
-        global bg_color_frame
-        bg_color_frame = "#00008b"
-
-        global font_btn
-        font_btn = ("Lao UI", 14)
-
-        global bg_btn
-        bg_btn = "#5e269d"
-
-        global font_title
-        font_title = ("MS Serif", 22, "bold")
-
-        global font_text
-        font_text = ("Comic Sans MS", 16, "italic")
 
         #create Ranking frame, Song text frame and Music player instances
         self.ranking_instance = RankingFrame(self.app_frame)
