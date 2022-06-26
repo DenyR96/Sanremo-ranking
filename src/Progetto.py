@@ -3,6 +3,7 @@ import tkinter as tk
 from tkinter import Canvas, Scrollbar, ttk
 import platform
 import json
+from turtle import color
 import webbrowser
 import pygame
 from urllib.request import urlopen
