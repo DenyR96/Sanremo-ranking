@@ -1,7 +1,7 @@
 from tkinter import *
 import tkinter as tk
 from tkinter import Canvas, Scrollbar
-from src.common_variables import color_canvas, color_text, font_title, win
+from common_variables import color_canvas, color_text, font_title, win
 
 class RankingFrame(tk.Frame):
     def __init__(self, container):

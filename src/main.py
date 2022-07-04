@@ -2,10 +2,10 @@ from tkinter import *
 import tkinter as tk
 from tkinter import Canvas, Scrollbar, ttk
 import webbrowser
-from src.ranking_frame import RankingFrame
-from src.song_text_frame import SongTextFrame
-from src.music_player import MusicPlayer
-import src.common_variables as common_variables
+from ranking_frame import RankingFrame
+from song_text_frame import SongTextFrame
+from music_player import MusicPlayer
+import common_variables as common_variables
 
 # sanremo's logos image
 logo_sanremo_2020 = PhotoImage(file = "assets/images/logo_sanremo_2020.png")

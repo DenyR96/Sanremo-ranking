@@ -2,17 +2,35 @@ from tkinter import *
 import tkinter as tk
 from tkinter import Canvas, Scrollbar
 import pygame
-from src.common_variables import color_btn, font_btn, color_text, rankings_data, os_name
 from urllib.request import urlopen
-import sys
-import os
+import sys, os
+import json
+import platform
+
+#global variables
+global color_btn
+color_btn = "#5e269d"
+
+global font_btn
+font_btn = ("Lao UI", 14)
+
+global color_text
+color_text = "#ffffff"
+
+global rankings_data
+rankings = open("src/Rankings.json", mode = "r")
+rankings_data = json.load(rankings) 
+
+global os_name
+os_name = platform.system()
+
 
 class MusicPlayer(tk.Frame):
     def __init__(self, container):
         super().__init__(container)
         pygame.init()
         pygame.mixer.init()
-          
+        
         self.pause_resume = StringVar()
         self.pause_resume.set("Pause")
         self.file_path = "assets/songs/file.mp3"
