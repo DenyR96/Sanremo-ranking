@@ -1,9 +1,7 @@
 from tkinter import *
 import tkinter as tk
 from tkinter import Canvas, Scrollbar
-from click import File
 import pygame
-from traitlets import Integer
 from src.common_variables import color_btn, font_btn, color_text, rankings_data, os_name
 from urllib.request import urlopen
 import sys
@@ -18,7 +16,7 @@ class MusicPlayer(tk.Frame):
         self.pause_resume = StringVar()
         self.pause_resume.set("Pause")
         self.file_path = "assets/songs/file.mp3"
-        self.mp3_file = Integer()
+        
         #creation of play, pause and stop buttons        
         self.play_button = tk.Button(container, text = "Play", bg = color_btn, font = font_btn, fg = color_text, command = self.play, state = "disabled", cursor = "hand2")
         self.play_button.config(highlightthickness = 0, activebackground = color_btn, activeforeground = color_text)
