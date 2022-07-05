@@ -13,7 +13,7 @@ win.resizable(False, False)
 
 #opening and loading of rankings and songs text file
 rankings = open("src/Rankings.json", mode = "r")
-rankings_data = json.load(rankings) 
+rankings_data = json.load(rankings)
 songs_text = open("src/Songs_text.json", mode = "r")
 songs_text_data = json.load(songs_text)
 
