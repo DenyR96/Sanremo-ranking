@@ -27,7 +27,7 @@ def test_pause(mocker:MockerFixture) -> None:
     music_player = MusicPlayer(win)
     assert music_player.playing_state == False #perchè lo stato di default è a false
     mock_close_val = None
-    mocker.patch.object(music_player, "os.close", return_value=mock_close_val)
+    mocker.patch.object(music_player, "os", return_value=mock_close_val)
     spy = mocker.spy(music_player, "os.close")
     res = music_player.stop()
     
