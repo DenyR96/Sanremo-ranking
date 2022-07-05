@@ -3,10 +3,34 @@ from pytest_mock import MockerFixture
 from src.common_variables import win
 import src.music_player as mp
 
+def test_play(mocker:MockerFixture) -> None:
+    mocker.patch.object(mp, "os", return_value = {})
+    spy = mocker.spy(mp.os, "path.isfile")
+
+    win = tkinter.Tk()
+    win.withdraw()
+    music_player = mp.MusicPlayer(win)
+    mock_path = 'assets/songs/file.mp3'
+    music_player.file_path = mock_path
+
+    assert music_player.playing_state == False
+    music_player.play()
+    assert music_player.play_button['state'] == 'disabled'
+    assert music_player.pause_button['state'] == 'active'
+    assert music_player.stop_button['state'] == 'active'
+    assert music_player.playing_state == True
+    assert music_player.pause_resume.get() == 'Pause'
+
+    win.destroy()
+
+    assert spy.called_once_with(mock_path)
+
+
 def test_pause(mocker:MockerFixture) -> None:
     win = tkinter.Tk()
     win.withdraw()
     music_player = mp.MusicPlayer(win)
+
     assert music_player.playing_state == False
     music_player.pause()
     assert music_player.playing_state == True
@@ -14,6 +38,7 @@ def test_pause(mocker:MockerFixture) -> None:
     music_player.pause()
     assert music_player.pause_resume.get() == 'Resume'
     assert music_player.playing_state == False
+
     win.destroy()
 
 
