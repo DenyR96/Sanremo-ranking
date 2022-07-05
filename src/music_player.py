@@ -51,15 +51,14 @@ class MusicPlayer(tk.Frame):
         self.playing_state = False
         
     def load(self, year, song_index): #fetch the song and create the mp3 file with the song in the directory  
-        song_title = rankings_data[year][song_index]['title']
-        song_title = song_title.replace(" ", "%20")
+        self.song_title = rankings_data[year][song_index]['title']
+        self.song_title = self.song_title.replace(" ", "%20")
 
-        mp3_link = "https://denyr96.github.io/Sanremo-ranking/assets/songs/"
-        mp3_link = mp3_link + year + "/" + song_title + ".mp3"
-        
+        self.mp3_link = "https://denyr96.github.io/Sanremo-ranking/assets/songs/"
+        self.mp3_link = self.mp3_link + year + "/" + self.song_title + ".mp3"
         
         try:
-            url_song = urlopen(mp3_link)
+            url_song = urlopen(self.mp3_link)
         except Exception as e:
             print(e) 
             sys.exit()
