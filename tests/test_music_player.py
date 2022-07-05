@@ -5,8 +5,6 @@ import src.music_player as mp
 import platform
 
 
-
-
 def test_load(mocker:MockerFixture) -> None:
     mocker.patch.object(mp, "os", return_value = {})
     spy_open = mocker.spy(mp.os, "open")
@@ -16,13 +14,15 @@ def test_load(mocker:MockerFixture) -> None:
     win = tkinter.Tk()
     win.withdraw()
     music_player = mp.MusicPlayer(win)
+    
     music_player.load('2022', 0)
     mock_song_title = 'Brividi'
     assert music_player.song_title == mock_song_title 
     mock_mp3_link = "https://denyr96.github.io/Sanremo-ranking/assets/songs/2022/Brividi.mp3"
     assert music_player.mp3_link == mock_mp3_link
     mock_os_name = platform.system()
-    assert os_name == mock_os_name 
+    assert os_name == mock_os_name
+    
     assert music_player.play_button['state'] == 'active'
     assert music_player.pause_button['state'] == 'disabled'
     assert music_player.stop_button['state'] == 'disabled'
@@ -30,7 +30,7 @@ def test_load(mocker:MockerFixture) -> None:
     assert spy_open.called_once_with(music_player.file_path)
     assert spy_write.called_once_with(music_player.mp3_file)
 
-
+    
 def test_play(mocker:MockerFixture) -> None:
     mocker.patch.object(mp, "os", return_value = {})
     spy = mocker.spy(mp.os, "path.isfile")
