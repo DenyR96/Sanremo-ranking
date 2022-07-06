@@ -27,7 +27,7 @@ class Main(tk.Frame):
         self.ranking_instance = RankingFrame(self.main_frame)
         self.song_text_instance = SongTextFrame(self.main_frame)
         self.music_player_instance = MusicPlayer(self.main_frame)
-        
+        print(type(self.main_frame))
         self.__create_widgets()
 
     def __create_widgets(self):
@@ -95,6 +95,7 @@ class Main(tk.Frame):
         self.radVar.set(99)
     
     def show_text(self):
+        song_text_frame_center = int(win.winfo_screenwidth() / 4.5)
         text_vbar = self.song_text_instance.song_text_vertical_bar
         text_canvas = self.song_text_instance.song_text_canvas
         num_canzone_scelta = self.song_choice()
@@ -102,10 +103,10 @@ class Main(tk.Frame):
         text_vbar.pack(side = "right", fill = "y")
         song_title = rankings_data[self.year_chosen][num_canzone_scelta]['title']
         self.song_text_instance.text_title.configure(text = song_title)
-        text_canvas.create_window(self.song_text_instance.song_text_frame_center, 20, window = self.song_text_instance.text_title, anchor = "n")
+        text_canvas.create_window(song_text_frame_center, 20, window = self.song_text_instance.text_title, anchor = "n")
         canzone = songs_text_data[self.year_chosen][num_canzone_scelta]["song_text"]
         self.song_text_instance.song_text.configure(text = canzone)
-        text_canvas.create_window(self.song_text_instance.song_text_frame_center, 80, window = self.song_text_instance.song_text, anchor = "n")
+        text_canvas.create_window(song_text_frame_center, 80, window = self.song_text_instance.song_text, anchor = "n")
     
     def show_video(self):
         num_canzone_scelta = self.song_choice()
